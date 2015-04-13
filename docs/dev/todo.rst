@@ -1,27 +1,24 @@
-How to Help
-===========
+Как помочь
+==========
 
-Requests is under active development, and contributions are more than welcome!
+Requests находится в активной разработке, поэтому участие крайне приветствуется. 
 
-#. Check for open issues or open a fresh issue to start a discussion around a bug.
-   There is a Contributor Friendly tag for issues that should be ideal for people who are not very
-   familiar with the codebase yet.
-#. Fork `the repository <https://github.com/kennethreitz/requests>`_ on GitHub and start making your
-   changes to a new branch.
-#. Write a test which shows that the bug was fixed.
-#. Send a pull request and bug the maintainer until it gets merged and published. :)
-   Make sure to add yourself to `AUTHORS <https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst>`_.
+#. Проверьте список открытых задач(issues) или создайте новую задачу, чтобы начать обсуждения бага. 
+    Существует тег "Contributor Friendly" для задач, которые идеально подойдут людям, кто еще не очень хорошо знаком с кодовой базой.
+#. Сделайте форк `репозитория  <https://github.com/kennethreitz/requests>`_ на GitHub и начните делать собственные изменения в новой ветке.
+#. Напишите тест, который покажет, что баг исправлен.
+#. Отправляйте пулл реквест мейнтейнеру пока он не будет принят и опубликован. :)
+   Убедитесь в том, чтобы добавили себя в `АВТОРОВ <https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst>`_.
 
-Feature Freeze
---------------
+Заморозка
+---------------------
 
-As of v1.0.0, Requests has now entered a feature freeze. Requests for new
-features and Pull Requests implementing those features will not be accepted.
+Так как Requests теперь версии v1.0.0, она больше не принимает запросы на добавление дополнительных свойств, а так же пулл реквесты с реализацией этих свойств. 
 
-Development Dependencies
-------------------------
+Зависимости для разработки
+--------------------------
 
-You'll need to install py.test in order to run the Requests' test suite::
+Вы должны установить py.test чтобы запустить набор тестов Requests::
 
     $ pip install -r requirements.txt
     $ py.test
@@ -31,10 +28,10 @@ You'll need to install py.test in order to run the Requests' test suite::
     test_requests.py .........................
     25 passed in 3.50 seconds
 
-Runtime Environments
---------------------
+Среда исполнения
+----------------
 
-Requests currently supports the following versions of Python:
+В настоящие время, Requests поодерживает следующие версии Python:
 
 - Python 2.6
 - Python 2.7
@@ -43,17 +40,17 @@ Requests currently supports the following versions of Python:
 - Python 3.3
 - PyPy 1.9
 
-Support for Python 3.1 and 3.2 may be dropped at any time.
+Поддержка Python 3.1 и 3.2 может быть прекращена в любое время.
 
-Google App Engine will never be officially supported. Pull Requests for compatibility will be accepted, as long as they don't complicate the codebase.
+Google App Engine никогда не будет официально поддерживается. Пулл реквесты для совместимости будут приниматься только до тех пор, пока они не усложняют код.
 
 
-Are you crazy?
---------------
+Вы с ума сошли?
+---------------
 
-- SPDY support would be awesome. No C extensions.
+- Иметь поддержка SPDY было бы круто. Но без модуля расширения на С.
 
-Downstream Repackaging
-----------------------
+Переработка и переупаковка
+--------------------------
 
-If you are repackaging Requests, please note that you must also redistribute the ``cacerts.pem`` file in order to get correct SSL functionality.
+Если вы переупаковываете Requests, пожалуйста, обратите внимание, что вы также должны распространять файл ``cacerts.pem``, чтобы SSL правильно функционировал.

@@ -1,43 +1,36 @@
-Development Philosophy
-======================
+Философия Разработки
+====================
 
-Requests is an open but opinionated library, created by an open but opinionated developer.
+Requests - это открытая, но своевольная библиотека, созданная открытыми, но своевольными разработчиками.
 
 
-Management Style
+Стиль управления
 ~~~~~~~~~~~~~~~~
 
-`Kenneth Reitz <http://kennethreitz.org>`_ is the BDFL. He has final say in any decision related to the Requests project. Kenneth is responsible for the direction and form of the library. In addition to making decisions based on technical merit, he is responsible for making decisions based on the development philosophy of Requests. Only Kenneth may merge code into Requests.
+`Кеннет Рейц <http://kennethreitz.org>`_ - великодушный пожизненный диктатор. За ним последнее слово в любом решении, связанном с проектом. Кеннет ответственнен за направление и форму библиотеки. В дополнение к принятию решений на основе технических достоинств, он ответственнен за принятие решений, основанных на философии разработки Requests. Только Кеннет может объединить код в Requests.
 
-`Ian Cordasco <http://www.coglib.com/~icordasc/>`_ and `Cory Benfield <https://lukasa.co.uk/about/>`_ are the core contributors. They are responsible for triaging bug reports, reviewing pull requests and ensuring that Kenneth is kept up to speed with developments around the library. The day-to-day managing of the project is done by the core contributors. They are responsible for making judgements about whether or not a feature request is likely to be accepted by Kenneth. They do not have the authority to change code or merge code changes, though they may change documentation. Their word is not final.
+`Ян Кордаско <http://www.coglib.com/~icordasc/>`_ и `Кори Бенфилд <https://lukasa.co.uk/about/>`_ являются основными участниками. Они ответственны за сортировку сообщений об ошибках, рассмотрение пулл реквестов  и обеспечение того, чтобы Кеннет успевал за той скоростья, с которой развивается  библиотека. Ежедневное управление проектом лежит на плечах основных участников. Они ответственны за решения о том, стоит или нет принимать запрос но новые свойства, основываясь на том, будет  ли это принято Кеннетом. Они не имеют права изменять код или объединять изменения кода, хотя они могут изменить документацию. Их решения не является окончательными.
 
-Values
-~~~~~~
+Ценности
+~~~~~~~~
 
-- Simplicity is always better than functionality.
-- Listen to everyone, then disregard it.
-- The API is all that matters. Everything else is secondary.
-- Fit the 90% use-case. Ignore the nay-sayers.
+- Простота всегда лучше функциональности.
+- Вылушайте всех, затем проигнорируйте это.
+- API - вот, что имеет значение. Все остальное вторично.
+- Не обращайте внимания на скептиков.
 
-Semantic Versioning
-~~~~~~~~~~~~~~~~~~~
+Семантическое Версионирование 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For many years, the open source community has been plagued with version number dystonia. Numbers vary so greatly from project to project, they are practically meaningless.
+На протяжении многих лет, Open Source сообщество страдает от безпорядка с номерами версий. Числа существенно различаются от проекта к проекту  и они практически бессмысленны.
 
-Requests uses `Semantic Versioning <http://semver.org>`_. This specification seeks to put an end to this madness with a small set of practical guidelines for you and your colleagues to use in your next project.
+Requests использует `Семантическое Версионирование  <http://semver.org>`_. Эта спецификация стремится положить конец всему тому безумию с помощью небольшого набором практических рекомендаций для Вас и Ваших коллег.
 
-Standard Library?
-~~~~~~~~~~~~~~~~~
+Стандартная библиотека?
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Requests has no *active* plans to be included in the standard library. This decision has been discussed at length with Guido as well as numerous core developers.
+Requests *не планируется*  включениать в стандартную библиотеку. Это окончательное решение было вынесено на обсуждении с Гвидо, а также многочисленными основными разработчиками.
 
-Essentially, the standard library is where a library goes to die. It is appropriate for a module to be included when active development is no longer necessary.
+По сути, стандартная библиотека это место, где библиотеки умирають. Это подходит для модуля, активное развитие которого больше не требуется.
 
-Requests just reached v1.0.0. This huge milestone marks a major step in the right direction.
-
-Linux Distro Packages
-~~~~~~~~~~~~~~~~~~~~~
-
-Distributions have been made for many Linux repositories, including: Ubuntu, Debian, RHEL, and Arch.
-
-These distributions are sometimes divergent forks, or are otherwise not kept up-to-date with the latest code and bugfixes. PyPI (and its mirrors) and GitHub are the official distribution sources; alternatives are not supported by the Requests project.
+Requests только достиг версии v1.0.0. Это огромная веха знаменует собой важный шаг в правильном направлении.
