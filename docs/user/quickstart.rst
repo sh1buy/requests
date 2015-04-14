@@ -1,121 +1,118 @@
 .. _quickstart:
 
-Quickstart
-==========
+ Краткое руководство
+====================
 
 .. module:: requests.models
 
-Eager to get started? This page gives a good introduction in how to get started
-with Requests.
+Не терпится начать? Эта страница расскажет, как начать работать
+с Requests.
 
-First, make sure that:
+Для начала убедитесь, что:
 
-* Requests is :ref:`installed <install>`
-* Requests is :ref:`up-to-date <updates>`
-
-
-Let's get started with some simple examples.
+* Requests :ref:`установленна <install>`
+* Requests :ref:`обновлена <updates>`
 
 
-Make a Request
+Давайте начнем с некоторых простых примеров.
+
+
+Сделать запрос
 --------------
 
-Making a request with Requests is very simple.
+Сделать запрос с помощью Requests очень просто.
 
-Begin by importing the Requests module::
+Начнем с импорта модуля Requests::
 
     >>> import requests
 
-Now, let's try to get a webpage. For this example, let's get GitHub's public
-timeline ::
+Теперь, давайте попробуем получить веб-страницу. Для этого примера, запросим 
+таймлайн Гитхаба ::
 
     >>> r = requests.get('https://api.github.com/events')
 
-Now, we have a :class:`Response <requests.Response>` object called ``r``. We can
-get all the information we need from this object.
+Итак, у нас есть объект :class:`Response <requests.Response>` названный ``r``. Мы можем
+получить всю нужную нам информацию из этого объекта.
 
-Requests' simple API means that all forms of HTTP request are as obvious. For
-example, this is how you make an HTTP POST request::
+Простота API Requests означает, что метод HTTP-запроса всегда очевиден. Например,
+так делается HTTP-запрос методом POST::
 
     >>> r = requests.post("http://httpbin.org/post")
 
-Nice, right? What about the other HTTP request types: PUT, DELETE, HEAD and
-OPTIONS? These are all just as simple::
+Правда, приятно? А как насчет других методов: PUT, DELETE, HEAD и OPTIONS?
+Все просто::
 
     >>> r = requests.put("http://httpbin.org/put")
     >>> r = requests.delete("http://httpbin.org/delete")
     >>> r = requests.head("http://httpbin.org/get")
     >>> r = requests.options("http://httpbin.org/get")
 
-That's all well and good, but it's also only the start of what Requests can
-do.
+Это все хорошо, но это только малая часть того, что может Requests.
 
 
-Passing Parameters In URLs
---------------------------
+Передача Параметров В URL
+-------------------------
 
-You often want to send some sort of data in the URL's query string. If
-you were constructing the URL by hand, this data would be given as key/value
-pairs in the URL after a question mark, e.g. ``httpbin.org/get?key=val``.
-Requests allows you to provide these arguments as a dictionary, using the
-``params`` keyword argument. As an example, if you wanted to pass
-``key1=value1`` and ``key2=value2`` to ``httpbin.org/get``, you would use the
-following code::
+Вам часто придется отправлять часть информации в строке запроса URL. Если
+вы строили URL-адрес вручную, то знаете, что эти данные записываются в виде 
+пары ключ/значение в URL после вопросительного знака, например ``httpbin.org/get?key=val``.
+Requests позволяет представить эти аргументы в качестве словаря, используя 
+аргумент ``params``. Как пример, если вы хотите передать ``key1=value1`` и 
+``key2=value2`` в ``httpbin.org/get``, вы можете использовать следующий код::
 
     >>> payload = {'key1': 'value1', 'key2': 'value2'}
     >>> r = requests.get("http://httpbin.org/get", params=payload)
 
-You can see that the URL has been correctly encoded by printing the URL::
+Вы можете убедиться, что URL был правильно закодирован, распечатав URL-адрес::
 
     >>> print(r.url)
     http://httpbin.org/get?key2=value2&key1=value1
 
-Note that any dictionary key whose value is ``None`` will not be added to the
-URL's query string.
+Обратите внимание, что любой ключ словаря со значением ``None` не будет добавлен к
+строке запроса URL-адреса.
 
-In order to pass a list of items as a value you must mark the key as
-referring to a list like string by appending ``[]`` to the key::
+Для того, чтобы передать список элементов в качестве значения необходимо пометить ключ, 
+добавив к нему квадратные скобки ``[]``::
 
     >>> payload = {'key1': 'value1', 'key2[]': ['value2', 'value3']}
     >>> r = requests.get("http://httpbin.org/get", params=payload)
     >>> print(r.url)
     http://httpbin.org/get?key1=value1&key2%5B%5D=value2&key2%5B%5D=value3
 
-Response Content
-----------------
+Содержимое Ответа
+-----------------
 
-We can read the content of the server's response. Consider the GitHub timeline
-again::
+Мы можем прочитать содержимое ответа сервера. Снова рассмотрим таймлайн 
+ГитХаба::
 
     >>> import requests
     >>> r = requests.get('https://api.github.com/events')
     >>> r.text
     u'[{"repository":{"open_issues":0,"url":"https://github.com/...
 
-Requests will automatically decode content from the server. Most unicode
-charsets are seamlessly decoded.
+Запросы будут автоматически декодировать контент с сервера. Большинство Unicode
+символов без проблем декодируется.
 
-When you make a request, Requests makes educated guesses about the encoding of
-the response based on the HTTP headers. The text encoding guessed by Requests
-is used when you access ``r.text``. You can find out what encoding Requests is
-using, and change it, using the ``r.encoding`` property::
+Когда вы делаете запрос, Requests делает обоснованные предположения о кодировке
+ответа на основе HTTP-заголовков. Requests угадывает какая кодировка текста используется 
+при доступе к ``r.text``. Вы можете выяснить какую кодировку Requests
+использует и изменить ее с помощью свойства ``r.encoding``::
 
     >>> r.encoding
     'utf-8'
     >>> r.encoding = 'ISO-8859-1'
 
-If you change the encoding, Requests will use the new value of ``r.encoding``
-whenever you call ``r.text``. You might want to do this in any situation where
-you can apply special logic to work out what the encoding of the content will
-be. For example, HTTP and XML have the ability to specify their encoding in
-their body. In situations like this, you should use ``r.content`` to find the
-encoding, and then set ``r.encoding``. This will let you use ``r.text`` with
-the correct encoding.
+Если вы измените кодировку, Requests будет использовать новое значение ``r.encoding``
+всякий раз, когда вы вызываете ``r.text``. Возможно, вам это пригодится, если вы хотите 
+использовать особую логику при выборе кодировки. Например, в HTTP и XML есть возможность 
+указать  кодировку в теле. В подобных ситуациях, вы должны использовать ``r.content``,
+чтобы найти кодировку, и затем установить ``r.encoding``. Это позволит вам использовать 
+``r.text`` с правильной кодировкой.
 
-Requests will also use custom encodings in the event that you need them. If
-you have created your own encoding and registered it with the ``codecs``
-module, you can simply use the codec name as the value of ``r.encoding`` and
-Requests will handle the decoding for you.
+Requests может использовать пользовательские кодировки, если вы нуждаетесь в них. Если
+вы создали нужную кодировку и зарегистрировали ее в модуле``codecs``, 
+вы можете просто использовать имя кодека как значение ``r.encoding` и
+Requests обработает кодировку.
 
 Binary Response Content
 -----------------------
